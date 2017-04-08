@@ -1,2 +1,5 @@
 # Assignment2
-assignment2
+Block device drivers are integrated with buffer cache mechanism for its implementation. The various steps involved in the implementation are as follows. The first step is to register for a major number of the device. It is done using register_blkdev function. Then we have the request queue for queuing the read and write requests. We spin lock associated with the request queue for its concurrent access protection and a request function to process the requests queued in the request queue. The device file operations are provided through the struct block_device_operations.The block device related specific things are registered using gendisk structure.
+Ram_device.c and ram_device.h holds RAM operations like vmallo, memcpy etc.They provide disk operation APIs like init,cleanup,read,write etc.
+Partition.c and partition.h helps to emulate the various partition tables on the disk on RAM.
+Ram_block.c is the core block driver implementation casting the disk on RAM as the block device files (/dev/rb*) to the user-space.
